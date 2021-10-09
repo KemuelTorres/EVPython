@@ -1,6 +1,6 @@
 import time
 import turtle
-
+import drawing_builder as db
 
 class Stack:
     def __init__(self):
@@ -28,34 +28,15 @@ class Stack:
         drawing.speed(10)
         for pos, item in enumerate(self.items):
 
-            self.__square(drawing)
+            db.square(drawing, self.height)
             # draw value in the middle of the square
-            drawing.penup()
-            drawing.right(90)
-            drawing.forward(self.height / 2)
-            drawing.right(90)
-            drawing.forward(self.height / 2)
-            drawing.write(item, False, align='center')
-            drawing.right(90)
-            drawing.forward(self.height / 2)
-            drawing.right(90)
-            drawing.forward(self.height / 2)
-            drawing.pendown()
+            db.write_text(drawing, item, self.height/2)
 
             # moves the pen to the next starting position
             if pos + 1 != self.size():
                 drawing.forward(self.height)
                 drawing.right(90)
         return drawing
-
-    def __square(self, drawing):
-        drawing.forward(self.height)
-        drawing.right(90)
-        drawing.forward(self.height)
-        drawing.right(90)
-        drawing.forward(self.height)
-        drawing.right(90)
-        drawing.forward(self.height)
 
     def draw_peek(self, pencil_color='black', filling_color='red'):
         drawing = self.__draw_stack(pencil_color, filling_color)
