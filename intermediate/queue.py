@@ -21,13 +21,13 @@ class Queue:
         return len(self.items)
 
     def draw(self):
-        drawing = turtle.Turtle()
-        drawing.speed(10)
+        y = self.height * self.size()/2
+        drawing = db.set_up(10, 0, y, "Queue", "First in first out behavior")
         for pos, item in enumerate(self.items):
 
             db.square(drawing, self.height, rotation='left')
             # draw value in the middle of the square
-            db.write_text(drawing, item, self.height / 2, rotation='left')
+            db.write_text(drawing, item, round(self.height / 2), rotation='left')
 
             # moves the pen to the next starting position
             if pos + 1 != self.size():

@@ -37,7 +37,7 @@ class DoublyLinkedList:
     def __init__(self):
         self.head = Node()
         self.size = 0
-        self.height = 50
+        self.height = 100
 
     def add(self, val):
         curr = self.head
@@ -101,16 +101,19 @@ class DoublyLinkedList:
             curr = curr.get_next()
 
     def draw(self):
-        drawing = turtle.Turtle()
-        drawing.speed(10)
-
-        db.square(drawing, self.height)
-        drawing.write("Header", False, align='center')
+        x = -(self.get_size()) * (self.height + (2 * round(self.height / 2))) / 2
+        drawing = db.set_up(5, x, 0, "DoublyLinkedList", "A list of nodes that have a prev reference and a "
+                                                          "next reference")
+        drawing.pendown()
+        offset = db.draw_node(drawing, self.height, "Header")
+        drawing.penup()
+        drawing.goto(offset, drawing.ycor())
         curr = self.head.get_next()
         while curr is not None:
-            db.square(drawing, self.height)
-            # draw value in the middle of the square
-            db.write_text(drawing, curr.get_data(), self.height / 2)
+            drawing.pendown()
+            offset = db.draw_node(drawing, self.height, curr.get_data())
+            drawing.penup()
+            drawing.goto(offset, drawing.ycor())
             curr = curr.get_next()
         time.sleep(10)
 
