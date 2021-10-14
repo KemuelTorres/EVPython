@@ -28,18 +28,18 @@ def draw_node(drawing: turtle.Turtle, width: int, data):
     drawing.forward(width / 2)
     # move to center from top left
     drawing.penup()
-    drawing.goto(drawing.xcor() - width / 2, drawing.ycor() - width / 4)
-    drawing.write("prev", align="center")
+    drawing.goto(drawing.xcor() - (width / 2), drawing.ycor() - width / 4)
+    drawing.write("next", align="center")
     # move to middle left
-    drawing.goto(drawing.xcor() - (width / 2), drawing.ycor())
+    drawing.goto(drawing.xcor() + (width / 2), drawing.ycor())
     drawing.pendown()
-    drawing.left(90)
+    drawing.left(270)
     # draws arrow
-    arrow(drawing, round(width / 2))
+    arrow(drawing, round(width / 2), direction='right')
     drawing.penup()
     # move to bottom left
-    drawing.goto(drawing.xcor(), drawing.ycor() - width / 4)
-    drawing.left(90)
+    drawing.goto(drawing.xcor()-width, drawing.ycor() - width / 4)
+    drawing.right(90)
     # draw bottom boxes
     drawing.pendown()
     drawing.forward(width / 2)
@@ -50,16 +50,17 @@ def draw_node(drawing: turtle.Turtle, width: int, data):
     # move to center from top left
     drawing.penup()
     drawing.goto(drawing.xcor() - width / 2, drawing.ycor() - width / 4)
-    drawing.write("next", align="center")
+    drawing.write("prev", align="center")
     # move to middle right
-    drawing.goto(drawing.xcor() + (width / 2), drawing.ycor())
+    drawing.goto(drawing.xcor() - (width / 2), drawing.ycor())
     drawing.pendown()
-    drawing.left(270)
+    drawing.left(90)
     # draws arrow
-    arrow(drawing, round(width / 2), direction='right')
+    arrow(drawing, round(width / 2))
     #move back to starting point
     drawing.penup()
     drawing.goto(x, y)
+    drawing.right(180)
     return x + width + round(width/2)
 
 
