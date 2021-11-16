@@ -10,7 +10,6 @@ tokens = [
     'COLON',
     'LESSTHAN',
     'GREATERTHAN',
-    'ARRAY',
     'INTEGER'
 ]
 keywords = {
