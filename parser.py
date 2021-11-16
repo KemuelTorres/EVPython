@@ -7,7 +7,7 @@ import logging
 #run this in terminal to activate venv
 
 ### Declarations and stuff ###
-parser= Yacc.yacc()
+parser = Yacc.yacc()
 log = logging.getLogger()
 dictionary = dict() 
 
@@ -29,77 +29,77 @@ while True:
 
 
 ###     DEFINITIONS      ###
-def parser_Function(x):
+def p_Func(p):
     ''' 
         Function : DEF CANVAS Canvas DEF STRUCTURES Structure DEF DRAW Draw 
     '''
     ###Read the next existing definition of token for assured correct input
-    dictionary[x[2]] = x[3]
-    dictionary[x[5]] = x[6]
-    dictionary[x[8]] = x[9]
+    dictionary[p[2]] = p[3]
+    dictionary[p[5]] = p[6]
+    dictionary[p[8]] = p[9]
 
 
-def parser_Boolean(x):
+def p_Boolean(p):
     '''
         Bool : true | false
     '''
     #default true
-    x[0]=x[1]
+    p[0]=p[1]
 
-def parser_Canvas(x):
+def p_Canvas(p):
     '''
          Canvas : LP Dimensions Position RP
     '''
     #adopting to the dimension and position
-    x[0] = [x[2], x[3]]
+    p[0] = [p[2], p[3]]
 
-def parser_Dimensions(x):
+def p_Dimensions(p):
     '''
          Dimensions : DIMENSIONS COLON LESSTHAN INTEGER COMMA INTEGER GREATERTHAN
     '''
     #adopting to the tuple
-    x[0] = (x[4], x[6])
+    p[0] = (p[4], p[6])
 
-def parser_Color(x):
+def p_Color(p):
     '''
-        Color: BLACK | BLUE
+        Color : BLACK | BLUE
     '''
     #default black
-    x[0]=x[1]
+    p[0]=p[1]
 
-def parser_Structure(x):
+def p_Structure(p):
     '''
         Structure : LP Struct RP              
     '''
-    x[0]= x[2]
+    p[0]= p[2]
 
-def parser_Struct(x):
+def p_Struct(p):
     '''
-        Struct: STRUCT Colon DataStructure
+        Struct : STRUCT Colon DataStructure
     '''
-    x[0]= x[3]
+    p[0]= p[3]
 
-def parser_DataStructure(x):
+def p_DataStructure(p):
     '''
         DS : ARRAY | QUEUE | STACK | DLL | BST
     '''
     #default array
-    x[0]=x[1]
+    p[0]=p[1]
 
-def parser_Array(x):
+def p_Array(p):
     '''
         Arr : Array
     '''
-    x[0]=x[1]
+    p[0]=p[1]
 
 
-def parser_int(x):
+def p_int(p):
     '''
         Int : Digit | Digit Integer
     '''
-    x[0]=x[1]
+    p[0]=p[1]
 
-def parser_error(x):
+def p_error(p):
     print("Registered syntax error.")
 
 
@@ -135,10 +135,10 @@ elif structure=="stack":
     stack=stack.Stack(stackVal, dimensions, position)
     stack.draw()
 
-elif structure == "doublyLinkedList":
-    dllVal=structureValue[1]
-    dll=doubly_linked_list.DoublyLinkedList(dllVal, dimensions, position)
-    dll.draw()
+# elif structure == "doublyLinkedList":
+#     dllVal=structureValue[1]
+#     dll=doubly_linked_list.DoublyLinkedList(dllVal, dimensions, position)
+#     dll.draw()
 
 else:
     print("Structure not yet developed.")
