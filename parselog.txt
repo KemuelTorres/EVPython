@@ -1,0 +1,148 @@
+   yacc.py: 362:PLY: PARSE DEBUG START
+   yacc.py: 410:
+   yacc.py: 411:State  : 0
+   yacc.py: 434:Stack  : . LexToken(DEF,'def',2,0)
+   yacc.py: 445:Action : Shift and goto state 2
+   yacc.py: 410:
+   yacc.py: 411:State  : 2
+   yacc.py: 434:Stack  : DEF . LexToken(CANVAS,'canvas',2,4)
+   yacc.py: 445:Action : Shift and goto state 3
+   yacc.py: 410:
+   yacc.py: 411:State  : 3
+   yacc.py: 434:Stack  : DEF CANVAS . LexToken(left_parenthesis,'(',2,10)
+   yacc.py: 445:Action : Shift and goto state 5
+   yacc.py: 410:
+   yacc.py: 411:State  : 5
+   yacc.py: 434:Stack  : DEF CANVAS left_parenthesis . LexToken(DIMENSIONS,'dimensions',2,11)
+   yacc.py: 445:Action : Shift and goto state 8
+   yacc.py: 410:
+   yacc.py: 411:State  : 8
+   yacc.py: 434:Stack  : DEF CANVAS left_parenthesis DIMENSIONS . LexToken(colon,':',2,21)
+   yacc.py: 445:Action : Shift and goto state 12
+   yacc.py: 410:
+   yacc.py: 411:State  : 12
+   yacc.py: 434:Stack  : DEF CANVAS left_parenthesis DIMENSIONS colon . LexToken(less_than,'<',2,22)
+   yacc.py: 445:Action : Shift and goto state 17
+   yacc.py: 410:
+   yacc.py: 411:State  : 17
+   yacc.py: 434:Stack  : DEF CANVAS left_parenthesis DIMENSIONS colon less_than . LexToken(integer,1500,2,23)
+   yacc.py: 445:Action : Shift and goto state 21
+   yacc.py: 410:
+   yacc.py: 411:State  : 21
+   yacc.py: 434:Stack  : DEF CANVAS left_parenthesis DIMENSIONS colon less_than integer . LexToken(comma,',',2,27)
+   yacc.py: 445:Action : Shift and goto state 25
+   yacc.py: 410:
+   yacc.py: 411:State  : 25
+   yacc.py: 434:Stack  : DEF CANVAS left_parenthesis DIMENSIONS colon less_than integer comma . LexToken(integer,400,2,28)
+   yacc.py: 445:Action : Shift and goto state 33
+   yacc.py: 410:
+   yacc.py: 411:State  : 33
+   yacc.py: 434:Stack  : DEF CANVAS left_parenthesis DIMENSIONS colon less_than integer comma integer . LexToken(greater_than,'>',2,31)
+   yacc.py: 445:Action : Shift and goto state 35
+   yacc.py: 410:
+   yacc.py: 411:State  : 35
+   yacc.py: 430:Defaulted state 35: Reduce using 6
+   yacc.py: 434:Stack  : DEF CANVAS left_parenthesis DIMENSIONS colon less_than integer comma integer greater_than . None
+   yacc.py: 469:Action : Reduce rule [Dimensions -> DIMENSIONS colon less_than integer comma integer greater_than] with ['dimensions',':','<',1500,',',400,'>'] and goto state 7
+   yacc.py: 506:Result : <tuple @ 0x1034f6100> ((1500, 400))
+   yacc.py: 410:
+   yacc.py: 411:State  : 7
+   yacc.py: 434:Stack  : DEF CANVAS left_parenthesis Dimensions . LexToken(POSITION,'position',2,33)
+   yacc.py: 445:Action : Shift and goto state 11
+   yacc.py: 410:
+   yacc.py: 411:State  : 11
+   yacc.py: 434:Stack  : DEF CANVAS left_parenthesis Dimensions POSITION . LexToken(colon,':',2,41)
+   yacc.py: 445:Action : Shift and goto state 16
+   yacc.py: 410:
+   yacc.py: 411:State  : 16
+   yacc.py: 434:Stack  : DEF CANVAS left_parenthesis Dimensions POSITION colon . LexToken(less_than,'<',2,42)
+   yacc.py: 445:Action : Shift and goto state 20
+   yacc.py: 410:
+   yacc.py: 411:State  : 20
+   yacc.py: 434:Stack  : DEF CANVAS left_parenthesis Dimensions POSITION colon less_than . LexToken(integer,20,2,43)
+   yacc.py: 445:Action : Shift and goto state 24
+   yacc.py: 410:
+   yacc.py: 411:State  : 24
+   yacc.py: 434:Stack  : DEF CANVAS left_parenthesis Dimensions POSITION colon less_than integer . LexToken(comma,',',2,45)
+   yacc.py: 445:Action : Shift and goto state 32
+   yacc.py: 410:
+   yacc.py: 411:State  : 32
+   yacc.py: 434:Stack  : DEF CANVAS left_parenthesis Dimensions POSITION colon less_than integer comma . LexToken(integer,200,2,46)
+   yacc.py: 445:Action : Shift and goto state 34
+   yacc.py: 410:
+   yacc.py: 411:State  : 34
+   yacc.py: 434:Stack  : DEF CANVAS left_parenthesis Dimensions POSITION colon less_than integer comma integer . LexToken(greater_than,'>',2,49)
+   yacc.py: 445:Action : Shift and goto state 36
+   yacc.py: 410:
+   yacc.py: 411:State  : 36
+   yacc.py: 430:Defaulted state 36: Reduce using 5
+   yacc.py: 434:Stack  : DEF CANVAS left_parenthesis Dimensions POSITION colon less_than integer comma integer greater_than . None
+   yacc.py: 469:Action : Reduce rule [Position -> POSITION colon less_than integer comma integer greater_than] with ['position',':','<',20,',',200,'>'] and goto state 10
+   yacc.py: 506:Result : <tuple @ 0x1034f6200> ((20, 200))
+   yacc.py: 410:
+   yacc.py: 411:State  : 10
+   yacc.py: 434:Stack  : DEF CANVAS left_parenthesis Dimensions Position . LexToken(right_parenthesis,')',2,50)
+   yacc.py: 445:Action : Shift and goto state 15
+   yacc.py: 410:
+   yacc.py: 411:State  : 15
+   yacc.py: 430:Defaulted state 15: Reduce using 4
+   yacc.py: 434:Stack  : DEF CANVAS left_parenthesis Dimensions Position right_parenthesis . None
+   yacc.py: 469:Action : Reduce rule [Canvas -> left_parenthesis Dimensions Position right_parenthesis] with ['(',(1500, 400),(20, 200),')'] and goto state 4
+   yacc.py: 506:Result : <list @ 0x1035110c0> ([(1500, 400), (20, 200)])
+   yacc.py: 410:
+   yacc.py: 411:State  : 4
+   yacc.py: 434:Stack  : DEF CANVAS Canvas . LexToken(DEF,'def',3,53)
+   yacc.py: 445:Action : Shift and goto state 6
+   yacc.py: 410:
+   yacc.py: 411:State  : 6
+   yacc.py: 434:Stack  : DEF CANVAS Canvas DEF . LexToken(STRUCTURES,'structures',3,57)
+   yacc.py: 445:Action : Shift and goto state 9
+   yacc.py: 410:
+   yacc.py: 411:State  : 9
+   yacc.py: 434:Stack  : DEF CANVAS Canvas DEF STRUCTURES . LexToken(left_parenthesis,'(',3,67)
+   yacc.py: 445:Action : Shift and goto state 14
+   yacc.py: 410:
+   yacc.py: 411:State  : 14
+   yacc.py: 434:Stack  : DEF CANVAS Canvas DEF STRUCTURES left_parenthesis . LexToken(STRUCT,'struct',3,68)
+   yacc.py: 445:Action : Shift and goto state 19
+   yacc.py: 410:
+   yacc.py: 411:State  : 19
+   yacc.py: 434:Stack  : DEF CANVAS Canvas DEF STRUCTURES left_parenthesis STRUCT . LexToken(colon,':',3,74)
+   yacc.py: 445:Action : Shift and goto state 23
+   yacc.py: 410:
+   yacc.py: 411:State  : 23
+   yacc.py: 434:Stack  : DEF CANVAS Canvas DEF STRUCTURES left_parenthesis STRUCT colon . LexToken(ARRAY,'array',3,75)
+   yacc.py: 445:Action : Shift and goto state 27
+   yacc.py: 410:
+   yacc.py: 411:State  : 27
+   yacc.py: 430:Defaulted state 27: Reduce using 11
+   yacc.py: 434:Stack  : DEF CANVAS Canvas DEF STRUCTURES left_parenthesis STRUCT colon ARRAY . None
+   yacc.py: 469:Action : Reduce rule [DataStructure -> ARRAY] with ['array'] and goto state 26
+   yacc.py: 506:Result : <str @ 0x103511af0> ('array')
+   yacc.py: 410:
+   yacc.py: 411:State  : 26
+   yacc.py: 430:Defaulted state 26: Reduce using 10
+   yacc.py: 434:Stack  : DEF CANVAS Canvas DEF STRUCTURES left_parenthesis STRUCT colon DataStructure . None
+   yacc.py: 469:Action : Reduce rule [Struct -> STRUCT colon DataStructure] with ['struct',':','array'] and goto state 18
+   yacc.py: 506:Result : <str @ 0x103511af0> ('array')
+   yacc.py: 410:
+   yacc.py: 411:State  : 18
+   yacc.py: 434:Stack  : DEF CANVAS Canvas DEF STRUCTURES left_parenthesis Struct . LexToken(right_parenthesis,')',3,80)
+   yacc.py: 445:Action : Shift and goto state 22
+   yacc.py: 410:
+   yacc.py: 411:State  : 22
+   yacc.py: 430:Defaulted state 22: Reduce using 9
+   yacc.py: 434:Stack  : DEF CANVAS Canvas DEF STRUCTURES left_parenthesis Struct right_parenthesis . None
+   yacc.py: 469:Action : Reduce rule [Structure -> left_parenthesis Struct right_parenthesis] with ['(','array',')'] and goto state 13
+   yacc.py: 506:Result : <str @ 0x103511af0> ('array')
+   yacc.py: 410:
+   yacc.py: 411:State  : 13
+   yacc.py: 430:Defaulted state 13: Reduce using 1
+   yacc.py: 434:Stack  : DEF CANVAS Canvas DEF STRUCTURES Structure . None
+   yacc.py: 469:Action : Reduce rule [Func -> DEF CANVAS Canvas DEF STRUCTURES Structure] with ['def','canvas',<list @ 0x1035110c0>,'def','structures','array'] and goto state 1
+   yacc.py: 506:Result : <NoneType @ 0x102c3a6a0> (None)
+   yacc.py: 410:
+   yacc.py: 411:State  : 1
+   yacc.py: 434:Stack  : Func . $end
+   yacc.py: 571:Done   : Returning <NoneType @ 0x102c3a6a0> (None)
+   yacc.py: 572:PLY: PARSE DEBUG END

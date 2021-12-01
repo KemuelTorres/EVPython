@@ -1,7 +1,7 @@
 import time
 import turtle
-import drawing_builder as db
-
+# import drawing_builder as db
+from . import drawing_builder as db
 
 class Queue:
     def __init__(self):
@@ -21,8 +21,10 @@ class Queue:
         return len(self.items)
 
     def draw(self):
-        y = self.height * self.size()/2
-        drawing = db.set_up(10, 0, y, "Queue", "First in first out behavior")
+        x = -35
+        y = 150
+        # y = self.height * self.size()/2
+        drawing = db.set_up(10, x, y, "Queue", "First in first out behavior")
         for pos, item in enumerate(self.items):
 
             db.square(drawing, self.height, rotation='left')
@@ -34,9 +36,3 @@ class Queue:
                 drawing.forward(self.height)
                 drawing.left(90)
         time.sleep(10)
-
-
-test = Queue()
-for i in range(10):
-    test.enqueue(i)
-test.draw()

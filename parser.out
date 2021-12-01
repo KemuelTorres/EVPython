@@ -1,0 +1,351 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    left_bracket
+    right_bracket
+
+Grammar
+
+Rule 0     S' -> Func
+Rule 1     Func -> DEF CANVAS Canvas DEF STRUCTURES Structure
+Rule 2     Bool -> true
+Rule 3     Bool -> false
+Rule 4     Canvas -> left_parenthesis Dimensions Position right_parenthesis
+Rule 5     Position -> POSITION colon less_than integer comma integer greater_than
+Rule 6     Dimensions -> DIMENSIONS colon less_than integer comma integer greater_than
+Rule 7     Color -> BLACK
+Rule 8     Color -> BLUE
+Rule 9     Structure -> left_parenthesis Struct right_parenthesis
+Rule 10    Struct -> STRUCT colon DataStructure
+Rule 11    DataStructure -> ARRAY
+Rule 12    DataStructure -> QUEUE
+Rule 13    DataStructure -> STACK
+Rule 14    DataStructure -> DLL
+Rule 15    DataStructure -> BST
+Rule 16    Int -> digit
+Rule 17    Int -> digit integer
+
+Terminals, with rules where they appear
+
+ARRAY                : 11
+BLACK                : 7
+BLUE                 : 8
+BST                  : 15
+CANVAS               : 1
+DEF                  : 1 1
+DIMENSIONS           : 6
+DLL                  : 14
+POSITION             : 5
+QUEUE                : 12
+STACK                : 13
+STRUCT               : 10
+STRUCTURES           : 1
+colon                : 5 6 10
+comma                : 5 6
+digit                : 16 17
+error                : 
+false                : 3
+greater_than         : 5 6
+integer              : 5 5 6 6 17
+left_bracket         : 
+left_parenthesis     : 4 9
+less_than            : 5 6
+right_bracket        : 
+right_parenthesis    : 4 9
+true                 : 2
+
+Nonterminals, with rules where they appear
+
+Bool                 : 
+Canvas               : 1
+Color                : 
+DataStructure        : 10
+Dimensions           : 4
+Func                 : 0
+Int                  : 
+Position             : 4
+Struct               : 9
+Structure            : 1
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . Func
+    (1) Func -> . DEF CANVAS Canvas DEF STRUCTURES Structure
+
+    DEF             shift and go to state 2
+
+    Func                           shift and go to state 1
+
+state 1
+
+    (0) S' -> Func .
+
+
+
+state 2
+
+    (1) Func -> DEF . CANVAS Canvas DEF STRUCTURES Structure
+
+    CANVAS          shift and go to state 3
+
+
+state 3
+
+    (1) Func -> DEF CANVAS . Canvas DEF STRUCTURES Structure
+    (4) Canvas -> . left_parenthesis Dimensions Position right_parenthesis
+
+    left_parenthesis shift and go to state 5
+
+    Canvas                         shift and go to state 4
+
+state 4
+
+    (1) Func -> DEF CANVAS Canvas . DEF STRUCTURES Structure
+
+    DEF             shift and go to state 6
+
+
+state 5
+
+    (4) Canvas -> left_parenthesis . Dimensions Position right_parenthesis
+    (6) Dimensions -> . DIMENSIONS colon less_than integer comma integer greater_than
+
+    DIMENSIONS      shift and go to state 8
+
+    Dimensions                     shift and go to state 7
+
+state 6
+
+    (1) Func -> DEF CANVAS Canvas DEF . STRUCTURES Structure
+
+    STRUCTURES      shift and go to state 9
+
+
+state 7
+
+    (4) Canvas -> left_parenthesis Dimensions . Position right_parenthesis
+    (5) Position -> . POSITION colon less_than integer comma integer greater_than
+
+    POSITION        shift and go to state 11
+
+    Position                       shift and go to state 10
+
+state 8
+
+    (6) Dimensions -> DIMENSIONS . colon less_than integer comma integer greater_than
+
+    colon           shift and go to state 12
+
+
+state 9
+
+    (1) Func -> DEF CANVAS Canvas DEF STRUCTURES . Structure
+    (9) Structure -> . left_parenthesis Struct right_parenthesis
+
+    left_parenthesis shift and go to state 14
+
+    Structure                      shift and go to state 13
+
+state 10
+
+    (4) Canvas -> left_parenthesis Dimensions Position . right_parenthesis
+
+    right_parenthesis shift and go to state 15
+
+
+state 11
+
+    (5) Position -> POSITION . colon less_than integer comma integer greater_than
+
+    colon           shift and go to state 16
+
+
+state 12
+
+    (6) Dimensions -> DIMENSIONS colon . less_than integer comma integer greater_than
+
+    less_than       shift and go to state 17
+
+
+state 13
+
+    (1) Func -> DEF CANVAS Canvas DEF STRUCTURES Structure .
+
+    $end            reduce using rule 1 (Func -> DEF CANVAS Canvas DEF STRUCTURES Structure .)
+
+
+state 14
+
+    (9) Structure -> left_parenthesis . Struct right_parenthesis
+    (10) Struct -> . STRUCT colon DataStructure
+
+    STRUCT          shift and go to state 19
+
+    Struct                         shift and go to state 18
+
+state 15
+
+    (4) Canvas -> left_parenthesis Dimensions Position right_parenthesis .
+
+    DEF             reduce using rule 4 (Canvas -> left_parenthesis Dimensions Position right_parenthesis .)
+
+
+state 16
+
+    (5) Position -> POSITION colon . less_than integer comma integer greater_than
+
+    less_than       shift and go to state 20
+
+
+state 17
+
+    (6) Dimensions -> DIMENSIONS colon less_than . integer comma integer greater_than
+
+    integer         shift and go to state 21
+
+
+state 18
+
+    (9) Structure -> left_parenthesis Struct . right_parenthesis
+
+    right_parenthesis shift and go to state 22
+
+
+state 19
+
+    (10) Struct -> STRUCT . colon DataStructure
+
+    colon           shift and go to state 23
+
+
+state 20
+
+    (5) Position -> POSITION colon less_than . integer comma integer greater_than
+
+    integer         shift and go to state 24
+
+
+state 21
+
+    (6) Dimensions -> DIMENSIONS colon less_than integer . comma integer greater_than
+
+    comma           shift and go to state 25
+
+
+state 22
+
+    (9) Structure -> left_parenthesis Struct right_parenthesis .
+
+    $end            reduce using rule 9 (Structure -> left_parenthesis Struct right_parenthesis .)
+
+
+state 23
+
+    (10) Struct -> STRUCT colon . DataStructure
+    (11) DataStructure -> . ARRAY
+    (12) DataStructure -> . QUEUE
+    (13) DataStructure -> . STACK
+    (14) DataStructure -> . DLL
+    (15) DataStructure -> . BST
+
+    ARRAY           shift and go to state 27
+    QUEUE           shift and go to state 28
+    STACK           shift and go to state 29
+    DLL             shift and go to state 30
+    BST             shift and go to state 31
+
+    DataStructure                  shift and go to state 26
+
+state 24
+
+    (5) Position -> POSITION colon less_than integer . comma integer greater_than
+
+    comma           shift and go to state 32
+
+
+state 25
+
+    (6) Dimensions -> DIMENSIONS colon less_than integer comma . integer greater_than
+
+    integer         shift and go to state 33
+
+
+state 26
+
+    (10) Struct -> STRUCT colon DataStructure .
+
+    right_parenthesis reduce using rule 10 (Struct -> STRUCT colon DataStructure .)
+
+
+state 27
+
+    (11) DataStructure -> ARRAY .
+
+    right_parenthesis reduce using rule 11 (DataStructure -> ARRAY .)
+
+
+state 28
+
+    (12) DataStructure -> QUEUE .
+
+    right_parenthesis reduce using rule 12 (DataStructure -> QUEUE .)
+
+
+state 29
+
+    (13) DataStructure -> STACK .
+
+    right_parenthesis reduce using rule 13 (DataStructure -> STACK .)
+
+
+state 30
+
+    (14) DataStructure -> DLL .
+
+    right_parenthesis reduce using rule 14 (DataStructure -> DLL .)
+
+
+state 31
+
+    (15) DataStructure -> BST .
+
+    right_parenthesis reduce using rule 15 (DataStructure -> BST .)
+
+
+state 32
+
+    (5) Position -> POSITION colon less_than integer comma . integer greater_than
+
+    integer         shift and go to state 34
+
+
+state 33
+
+    (6) Dimensions -> DIMENSIONS colon less_than integer comma integer . greater_than
+
+    greater_than    shift and go to state 35
+
+
+state 34
+
+    (5) Position -> POSITION colon less_than integer comma integer . greater_than
+
+    greater_than    shift and go to state 36
+
+
+state 35
+
+    (6) Dimensions -> DIMENSIONS colon less_than integer comma integer greater_than .
+
+    POSITION        reduce using rule 6 (Dimensions -> DIMENSIONS colon less_than integer comma integer greater_than .)
+
+
+state 36
+
+    (5) Position -> POSITION colon less_than integer comma integer greater_than .
+
+    right_parenthesis reduce using rule 5 (Position -> POSITION colon less_than integer comma integer greater_than .)
+

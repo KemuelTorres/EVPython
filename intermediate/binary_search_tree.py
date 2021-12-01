@@ -198,3 +198,4 @@ class BinarySearchTree:
                                                 currentNode.rightChild.payload,
                                                 currentNode.rightChild.leftChild,
                                                 currentNode.rightChild.rightChild)
+

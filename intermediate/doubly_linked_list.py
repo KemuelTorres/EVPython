@@ -1,6 +1,10 @@
 import time
 import turtle
-import drawing_builder as db
+import os 
+dir_path = os.path.dirname(os.path.realpath(__file__))
+print(dir_path)
+# import drawing_builder as db
+from . import drawing_builder as db
 
 
 class Node:
@@ -101,7 +105,8 @@ class DoublyLinkedList:
             curr = curr.get_next()
 
     def draw(self):
-        x = -(self.get_size()) * (self.height + (2 * round(self.height / 2))) / 2
+        x = -300
+        # x = -(self.get_size()) * (self.height + (2 * round(self.height / 2))) / 2
         drawing = db.set_up(5, x, 0, "DoublyLinkedList", "A list of nodes that have a prev reference and a "
                                                           "next reference")
         drawing.pendown()
@@ -116,9 +121,3 @@ class DoublyLinkedList:
             drawing.goto(offset, drawing.ycor())
             curr = curr.get_next()
         time.sleep(10)
-
-
-test = DoublyLinkedList()
-for i in range(5):
-    test.add(i)
-test.draw()
