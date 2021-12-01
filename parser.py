@@ -1,14 +1,12 @@
 from main import test
-import yacc as Yacc
+import ply.yacc as yacc
 from lexer import tokens
-from intermediate import array,binary_search_tree,doubly_linked_list,queue,stack
+from intermediate import binary_search_tree, doubly_linked_list, queue, stack
 import logging
 #source ./venv/Scripts/activate
 #run this in terminal to activate venv
 
 ### Declarations and stuff ###
-parser = Yacc.yacc()
-log = logging.getLogger()
 dictionary = dict() 
 
 
@@ -19,6 +17,87 @@ logging.basicConfig(
     format="%(filename)10s:%(lineno)4d:%(message)s"
 )
 
+
+###     DEFINITIONS      ###
+def p_Func(p):
+    '''
+        Func : DEF CANVAS Canvas DEF STRUCTURES Structure
+    '''
+    dictionary[p[2]] = p[3]
+    dictionary[p[5]] = p[6]
+
+def p_Bool(p):
+    '''
+        Bool : true
+             | false
+    '''
+    #default true
+    p[0] = p[1]
+
+def p_Canvas(p):
+    '''
+        Canvas : left_parenthesis Dimensions Position right_parenthesis
+    '''
+    #adopting to the dimension and position
+    p[0] = [p[2], p[3]]
+
+def p_Position(p):
+    '''
+        Position : POSITION colon less_than integer comma integer greater_than
+    '''
+    p[0] = (p[4], p[6])
+
+def p_Dimensions(p):
+    '''
+        Dimensions : DIMENSIONS colon less_than integer comma integer greater_than
+    '''
+    #adopting to the tuple
+    p[0] = (p[4], p[6])
+
+def p_Color(p):
+    '''
+        Color : BLACK
+              | BLUE
+    '''
+    #default black
+    p[0]=p[1]
+
+def p_Structure(p):
+    '''
+        Structure : left_parenthesis Struct right_parenthesis              
+    '''
+    p[0]= p[2]
+
+def p_Struct(p):
+    '''
+        Struct : STRUCT colon DataStructure
+    '''
+    p[0]= p[3]
+
+def p_DataStructure(p):
+    '''
+        DataStructure : ARRAY
+                      | QUEUE
+                      | STACK
+                      | DLL
+                      | BST
+    '''
+    #default array
+    p[0]=p[1]
+
+def p_int(p):
+    '''
+    Int : digit 
+        | digit integer
+    '''
+    p[0]=p[1]
+
+def p_error(p):
+    print("Registered syntax error.")
+
+parser = yacc.yacc()
+log = logging.getLogger()
+
 while True:
     try:
         s = test('test')
@@ -28,118 +107,33 @@ while True:
     break
 
 
-###     DEFINITIONS      ###
-def p_Func(p):
-    ''' 
-        Function : DEF CANVAS Canvas DEF STRUCTURES Structure DEF DRAW Draw 
-    '''
-    ###Read the next existing definition of token for assured correct input
-    dictionary[p[2]] = p[3]
-    dictionary[p[5]] = p[6]
-    dictionary[p[8]] = p[9]
-
-
-def p_Boolean(p):
-    '''
-        Bool : true | false
-    '''
-    #default true
-    p[0]=p[1]
-
-def p_Canvas(p):
-    '''
-         Canvas : LP Dimensions Position RP
-    '''
-    #adopting to the dimension and position
-    p[0] = [p[2], p[3]]
-
-def p_Dimensions(p):
-    '''
-         Dimensions : DIMENSIONS COLON LESSTHAN INTEGER COMMA INTEGER GREATERTHAN
-    '''
-    #adopting to the tuple
-    p[0] = (p[4], p[6])
-
-def p_Color(p):
-    '''
-        Color : BLACK | BLUE
-    '''
-    #default black
-    p[0]=p[1]
-
-def p_Structure(p):
-    '''
-        Structure : LP Struct RP              
-    '''
-    p[0]= p[2]
-
-def p_Struct(p):
-    '''
-        Struct : STRUCT Colon DataStructure
-    '''
-    p[0]= p[3]
-
-def p_DataStructure(p):
-    '''
-        DS : ARRAY | QUEUE | STACK | DLL | BST
-    '''
-    #default array
-    p[0]=p[1]
-
-def p_Array(p):
-    '''
-        Arr : Array
-    '''
-    p[0]=p[1]
-
-
-def p_int(p):
-    '''
-        Int : Digit | Digit Integer
-    '''
-    p[0]=p[1]
-
-def p_error(p):
-    print("Registered syntax error.")
-
-
-
 ###     Intermediate Code Connection        ###
-
-if len(dictionary['draw']) == 3:
-    dimensions = dictionary['canvas'][0]   # dimensions of the screen
-    position = dictionary['canvas'][2]         # tuple (x,y) x=pixels from left fo screen, y=pixels from top of screen
-    structure=dictionary['structures'][0]      # type of data structures
-    structureValue=dictionary['structures'][1] # data (list)
-
-else:
-    dimensions = dictionary['canvas'][0]
-    position = dictionary['canvas'][2]
-    structure= dictionary['draw'][4][0]
-    structureValue=dictionary['draw'][4][1]
+### Declarations and stuff ###
+print(dictionary)
 
 
-if structure=='array':
-#     arrayVal=structureValue[1]
-#     array=array.arrayclassnameholder(arrayVal, dimensions, position)
-#     array.draw()
-    print("yes")
-    
-elif structure=='queue':
-    queueVal=structureValue[1]
-    queue=queue.Queue(queueVal, dimensions, position)
-    queue.draw()
-    
-elif structure=="stack":
-    stackVal=structureValue[1]
-    stack=stack.Stack(stackVal, dimensions, position)
-    stack.draw()
+canvasDimension = dictionary['canvas'][0]
+structPosition = dictionary['canvas'][1]
+structure = dictionary['structures']
 
-# elif structure == "doublyLinkedList":
-#     dllVal=structureValue[1]
-#     dll=doubly_linked_list.DoublyLinkedList(dllVal, dimensions, position)
-#     dll.draw()
-
-else:
-    print("Structure not yet developed.")
-
+match structure:
+    case "queue":
+        testa = queue.Queue()
+        for i in range(10):
+            testa.enqueue(i)
+        testa.draw()
+    case "doublyLinkedList":
+        testa = doubly_linked_list.DoublyLinkedList()
+        
+        for i in range(5):
+            testa.add(i)
+        testa.draw()
+    case "stack":
+        testa = stack.Stack()
+        for _ in range(6):
+            testa.push(_)
+        testa.draw_peek()
+    case "binary_search_tree":
+        binary_search_tree.BinarySearchTree()
+    case _:
+        print(f"The Structure {structure} you desire is not available")

@@ -1,1 +1,2 @@
-def canvas(dimensions:<1500,400> bgColor:WHITE position:<20,200>) 
+def canvas(dimensions:<1500,400> position:<20,200>) 
+def structures(struct:doublyLinkedList)

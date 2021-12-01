@@ -122,7 +122,7 @@ class DoublyLinkedList:
         time.sleep(10)
 
 
-test = DoublyLinkedList()
-for i in range(5):
-    test.add(i)
-test.draw()
+# test = DoublyLinkedList()
+# for i in range(5):
+#     test.add(i)
+# test.draw()

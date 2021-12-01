@@ -36,7 +36,7 @@ class Queue:
         time.sleep(10)
 
 
-test = Queue()
-for i in range(10):
-    test.enqueue(i)
-test.draw()
+# test = Queue()
+# for i in range(10):
+#     test.enqueue(i)
+# test.draw()

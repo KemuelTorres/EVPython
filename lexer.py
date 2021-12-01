@@ -1,16 +1,18 @@
-import lex
+from ply import lex as lex
+from main import test
+
 
 tokens = [
-    'DIGIT',
-    'LP',
-    'RP',
-    'LB',
-    'RB',
-    'COMMA',
-    'COLON',
-    'LESSTHAN',
-    'GREATERTHAN',
-    'INTEGER'
+    'digit',
+    'left_parenthesis',
+    'right_parenthesis',
+    'left_bracket',
+    'right_bracket',
+    'comma',
+    'colon',
+    'less_than',
+    'greater_than',
+    'integer'
 ]
 keywords = {
     'true': 'true',
@@ -18,14 +20,15 @@ keywords = {
     'def': 'DEF',
     'canvas': 'CANVAS',
     'structures': 'STRUCTURES',
-    'draw': 'DRAW',
+    'struct': 'STRUCT',
+    # 'draw': 'DRAW',
     'dimensions': 'DIMENSIONS',
     'position': 'POSITION',
     # '': '',
 }
 colors = {
-    'black': 'black',
-    'blue': 'blue'
+    'BLACK' : 'BLACK',
+    'BLUE' : 'BLUE'
 }
 structures = {
     'array': 'ARRAY',
@@ -36,56 +39,60 @@ structures = {
 }
 tokens += list(keywords.values()) + list(colors.values()) + list(structures.values())
 
-left_parenthesis = r'\('
-right_parenthesis = r'\)'
-left_bracket = r'\['
-right_bracket = r'\]'
-colon = r'\:'
-comma = r'\,'
-less_than = r'\<'
-greater_than = r'\>'
-digit = r'[0-9]'
+t_left_parenthesis = r'\('
+t_right_parenthesis = r'\)'
+t_left_bracket = r'\['
+t_right_bracket = r'\]'
+t_colon = r'\:'
+t_comma = r'\,'
+t_less_than = r'\<'
+t_greater_than = r'\>'
+t_digit = r'[0-9]'
+
+t_ignore = ' \t'
 
 
-def reserved_word_token(token):
-    # reserved_words = ' | '.join(keywords.values())
+def t_KEYWORDS(token):
+    r'def | canvas | structures | dimensions | position | struct'
     if token.value in keywords:
         token.type = keywords[token.value]
     return token
 
 
-def reserved_colors_token(token):
-    # reserved_words = ' | '.join(keywords.values())
+def t_COLORS(token):
+    r'BLACK | BLUE'
     if token.value in colors:
-        token.type = keywords[token.value]
+        token.type = colors[token.value]
     return token
 
 
-def reserved_structure_token(token):
-    # reserved_words = ' | '.join(keywords.values())
+def t_STRUCTURES(token):
+    r'array | queue | stack | doublyLinkedList | binarySearchTree'
     if token.value in structures:
-        token.type = keywords[token.value]
+        token.type = structures[token.value]
     return token
 
 
-def integer_token(token):
+def t_integer(token):
+    r'\d+'
     token.value = int(token.value)
     return token
 
 
-def t_new_line(token):
+def t_newLine(token):
+    r'\n+'
     token.lexer.lineno += len(token.value)
 
 
 def t_error(token):
-    print("invalid chapters")
+    print("invalid syntax")
     token.lexer.skip(1)
 
 
-# lexer = lex.lex()
-# lexer.input("banana")
-#
-# while True:
-#     tok = lexer.token()
-#     if not tok:
-#         break
+lexer = lex.lex()
+lexer.input(test("test"))
+
+while True:
+    tok = lexer.token()
+    if not tok:
+        break

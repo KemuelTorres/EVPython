@@ -53,7 +53,7 @@ class Stack:
         time.sleep(5)
 
 
-test = Stack()
-for _ in range(6):
-    test.push(_)
-test.draw_peek()
+# test = Stack()
+# for _ in range(6):
+#     test.push(_)
+# test.draw_peek()
