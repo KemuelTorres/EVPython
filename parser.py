@@ -1,7 +1,7 @@
 from main import test
 import ply.yacc as yacc
 from lexer import tokens
-from intermediate import binary_search_tree, doubly_linked_list, queue, stack
+from intermediate import binary_search_tree, doubly_linked_list, queue, stack, array
 import logging
 #source ./venv/Scripts/activate
 #run this in terminal to activate venv
@@ -124,9 +124,11 @@ match structure:
         testa.draw()
     case "doublyLinkedList":
         testa = doubly_linked_list.DoublyLinkedList()
-        
-        for i in range(5):
-            testa.add(i)
+        colors = ["Red", "Green", "Blue"]
+        #, "Purple", "Black",
+        #"Yellow", "Green", "Orange", "White"]
+        for color in colors:
+            testa.add(color)
         testa.draw()
     case "stack":
         testa = stack.Stack()
@@ -134,6 +136,21 @@ match structure:
             testa.push(_)
         testa.draw_peek()
     case "binary_search_tree":
-        binary_search_tree.BinarySearchTree()
+        test = binary_search_tree.BinarySearchTree()
+        colors = ["red", "green", "blue", "purple", "black",
+         "yellow", "green", "orange", "white"]
+        for i in len(colors):
+            test.put(i, colors)
+    case "array":
+        test = array.Array()
+        names = ["Joe", "Sarah", "Harry", "Tom", "Megan",
+         "Rick", "Julie", "Mark", "Kyle", "Sam"]
+        for name in names:
+            test.insert(name)
+        test.draw()
     case _:
-        print(f"The Structure {structure} you desire is not available")
+        print("The Structure {structure} you desire is not available")
+
+
+
+

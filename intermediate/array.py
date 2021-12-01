@@ -1,6 +1,6 @@
 import time
-import drawing_builder as db
 import turtle
+from . import drawing_builder as db
 
 class Array:
 
@@ -40,40 +40,22 @@ class Array:
     def size(self):
         return len(self.items)
 
-    # width, height = 600, 600
-    # screen = turtle.Screen()
-    # screen.setup(width + 4, height + 8)
-    # screen.setworldcoordinates(0, 0, width, height)
-    # screen.title("EVPython GUI")
-    # screen.bgcolor("white")
-    # turtle.done()
-
     def draw(self):
-        x = -400
+        x = -100
         y = self.height * 3
-        speed = 1
+        speed = 10
         drawing = db.set_up(speed, x, y, "Array", "A collection of items stored at contiguous memory locations.")
-
+        index = 0
         for pos, item in enumerate(self.items):
-            db.square(drawing, self.height, rotation='right')
+            db.square(drawing, self.height, rotation='left')
             # draw value in the middle of the square
-            db.write_text(drawing, item, round(self.height / 2), rotation='right')
+            db.write_text(drawing, item, round(self.height / 2), rotation='left')
 
+            db.write_text_offset(drawing, index, round(self.height / 2), rotation='left')
+            index += 1
             # Playing around with drawing, must fix!
             if pos + 1 != self.size():
-                drawing.forward(self.height)
+                drawing.forward(0)
                 drawing.left(90)
-                turtle.penup()
-                drawing.forward(self.height)
-                drawing.left(90)
-                turtle.pendown()
-                drawing.forward(self.height)
-                drawing.left(90)
-                turtle.penup()
         time.sleep(10)
 
-
-test = Array()
-for i in range(10):
-    test.insert(i)
-test.draw()

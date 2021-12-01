@@ -1,6 +1,5 @@
 import time
 import turtle
-# import drawing_builder as db
 from . import drawing_builder as db
 
 class Stack:
@@ -53,7 +52,3 @@ class Stack:
         time.sleep(5)
 
 
-# test = Stack()
-# for _ in range(6):
-#     test.push(_)
-# test.draw_peek()

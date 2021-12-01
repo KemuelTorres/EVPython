@@ -105,7 +105,8 @@ class DoublyLinkedList:
             curr = curr.get_next()
 
     def draw(self):
-        x = -(self.get_size()) * (self.height + (2 * round(self.height / 2))) / 2
+        x = -300
+        # x = -(self.get_size()) * (self.height + (2 * round(self.height / 2))) / 2
         drawing = db.set_up(5, x, 0, "DoublyLinkedList", "A list of nodes that have a prev reference and a "
                                                           "next reference")
         drawing.pendown()
@@ -120,9 +121,3 @@ class DoublyLinkedList:
             drawing.goto(offset, drawing.ycor())
             curr = curr.get_next()
         time.sleep(10)
-
-
-# test = DoublyLinkedList()
-# for i in range(5):
-#     test.add(i)
-# test.draw()
